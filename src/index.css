@@ -236,6 +236,29 @@ Grocery List
   padding: 0.25rem 1rem;
   border-radius: var(--radius);
   text-transform: capitalize;
+  background-color: var(--clr-grey-10);
+}
+.grocery-item-active {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius);
+  text-transform: capitalize;
+  background-color: var(--clr-green-light);
+}
+.in-Cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius);
+  text-transform: capitalize;
+  background-color: green;
 }
 .grocery-item:hover {
   color: var(--clr-grey-5);
@@ -251,6 +274,7 @@ Grocery List
   transition: var(--transition);
 }
 .edit-btn,
+.add-btn,
 .delete-btn {
   background: transparent;
   border-color: transparent;
@@ -260,9 +284,15 @@ Grocery List
   transition: var(--transition);
 }
 .edit-btn {
-  color: var(--clr-green-light);
+  color: black;
+}
+.add-btn {
+  color: black;
 }
 .edit-btn:hover {
+  color: rgb(230, 230, 59);
+}
+.add-btn:hover {
   color: var(--clr-green-dark);
 }
 .delete-btn {

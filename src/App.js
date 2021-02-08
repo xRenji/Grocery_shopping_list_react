@@ -20,6 +20,9 @@ function App() {
   const [editID,setEditID] = useState(null);
   const [alert,setAlert] = useState({show:false,msg:"",type:""});
 
+  const [isActive, setIsActive] = useState(false);
+  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     
@@ -45,9 +48,12 @@ function App() {
     else {
       //show alert
       showAlert(true,"success","item added to the list")
-      const newItem = {id: new Date().getTime().toString(),title:name}; // seti new item 
+      
+      const newItem = {id: new Date().getTime().toString(),title:name,cart:false}; // set new item 
       setList([...list,newItem]);
       setName('');
+      console.log(newItem)
+      
     }
   }
 
@@ -78,6 +84,28 @@ const editItem = (id) => {
 
 }
 
+// add to cart functionality
+
+const handleToggle = (id) => {
+  const specificItem = list.find((item)=>item.id === id);
+  
+  
+  if (!specificItem.cart) {
+    setIsActive(!isActive)
+    specificItem.cart = true;
+  } else {
+    specificItem.cart = false;
+    setIsActive(!isActive)
+  }
+  console.log(specificItem)
+  console.log(isActive)
+  };
+
+
+
+
+
+
 //local data
 useEffect(()=> {
   localStorage.setItem('list',JSON.stringify(list))
@@ -98,7 +126,7 @@ useEffect(()=> {
     </form>
     {list.length > 0 && (
     <div className="grocery-container">
-      <List items={list} removeItem={removeItem} editItem={editItem}/>
+      <List items={list} removeItem={removeItem} editItem={editItem} handleToggle={handleToggle} isActive={isActive} />
       <button className="clear-btn" onClick={clearList}>clear items</button>
     </div>)}
   </section>
